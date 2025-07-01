@@ -4,11 +4,11 @@ LABEL       author="Torsten Widmann" maintainer="info@goover.de"
 
 ENV         DEBIAN_FRONTEND=noninteractive
 
-RUN         apt update -y \
-            && apt upgrade -y \
-            && wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
+RUN         wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
             && sudo dpkg -i packages-microsoft-prod.deb \
             && rm packages-microsoft-prod.deb \
+            && apt update -y \
+            && apt upgrade -y \
             && apt install -y git python3.11 apt-transport-https wget curl iproute2 libgdiplus tini dotnet-sdk-9.0
             
 
