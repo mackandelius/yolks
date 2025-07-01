@@ -6,12 +6,11 @@ ENV         DEBIAN_FRONTEND=noninteractive
 
 RUN         apt update -y \
             && apt upgrade -y \
-            && apt install -y git python3.11 apt-transport-https wget curl iproute2 libgdiplus tini \
-            && wget https://dot.net/v1/dotnet-install.sh \
-            && D_V="$(curl -sSL https://dotnet.microsoft.com/en-us/download/dotnet/9.0 | grep -i  '<h3 id="sdk-9.*">SDK 9.*.*</h3>'  | head -1 | awk -F\" '{print $3}' | awk '{print $2;}' | sed 's/<\/h3>//g')" \ 
-            && chmod +x dotnet-install.sh \
-			&& ./dotnet-install.sh -i /usr/share -v $D_V \
-            && ln -s /usr/share/dotnet /usr/bin/dotnet
+            && wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
+            && sudo dpkg -i packages-microsoft-prod.deb \
+            && rm packages-microsoft-prod.deb \
+            && apt install -y git python3.11 apt-transport-https wget curl iproute2 libgdiplus tini dotnet-sdk-9.0
+            
 
 USER        container
 ENV         USER=container HOME=/home/container
