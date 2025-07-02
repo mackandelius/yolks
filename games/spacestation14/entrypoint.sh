@@ -28,8 +28,8 @@ cd /mnt/server || exit 1
 git clone https://github.com/ss14Starlight/space-station-14.git
 cd space-station-14
 git submodule update --init --recursive 
-mv * ../
-cd ..
+#mv * ../
+#cd ..
 #rm space-station-14
 echo "Running RUN_THIS.py"
 
@@ -41,7 +41,7 @@ dotnet run --project Content.Packaging server --hybrid-acz --platform linux-x64
 
 # Move compiled files to accessible server folder.
 #mkdir -p /mnt/server
-#mv release/ /mnt/server/
+mv release/ /mnt/server/
 
 # Replace Startup Variables
 MODIFIED_STARTUP=$(echo -e ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')
