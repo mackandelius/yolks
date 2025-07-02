@@ -19,4 +19,4 @@ RUN         apt update -y \
 ## Start with Tini to pass future stop signals correctly
 STOPSIGNAL  SIGINT
 ENTRYPOINT  ["/usr/bin/tini", "-g", "--"]
-CMD         ["/entrypoint.sh"]
+CMD         ["/bin/bash", "/entrypoint.sh"]
