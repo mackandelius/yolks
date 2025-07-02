@@ -27,11 +27,12 @@ cd /mnt/server || exit 1
 #Installing the server
 git clone https://github.com/ss14Starlight/space-station-14.git
 cd space-station-14
+git submodule update --init --recursive 
 mv * ../
 cd ..
 #rm space-station-14
 echo "Running RUN_THIS.py"
-git submodule update --init --recursive 
+
 #python RUN_THIS.py || /usr/bin/python3 RUN_THIS.py || /usr/bin/python RUN_THIS.py
 
 echo "Building server"
