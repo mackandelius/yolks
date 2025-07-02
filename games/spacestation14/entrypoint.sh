@@ -31,9 +31,16 @@ mv * ../
 cd ..
 rm space-station-14
 echo "Running RUN_THIS.py"
+echo "running python3"
 python3 RUN_THIS.py
+echo "running py"
 py RUN_THIS.py
+echo "running python"
 python RUN_THIS.py
+echo "running /usr/bin/python3"
+/usr/bin/python3 RUN_THIS.py
+echo "running /usr/bin/python"
+/usr/bin/python RUN_THIS.py
 
 echo "Building server"
 dotnet build Content.Packaging --configuration Release
