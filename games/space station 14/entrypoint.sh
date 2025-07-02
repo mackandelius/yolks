@@ -11,6 +11,13 @@ export TZ
 INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP
 
+# set this variable, dotnet needs it even without it it reports to `dotnet --info` it can not start any aplication without this
+export DOTNET_ROOT=/usr/share/
+
+# print the dotnet version on startup
+printf "\033[1m\033[33mcontainer@pelican~ \033[0mdotnet --version\n"
+dotnet --version
+
 # Switch to the container's working directory
 cd /home/container || exit 1
 
@@ -27,3 +34,10 @@ python3 RUN_THIS.py
 echo "Building server"
 dotnet build Content.Packaging --configuration Release
 dotnet run --project Content.Packaging server --hybrid-acz --platform linux-x64
+
+# Replace Startup Variables
+MODIFIED_STARTUP=$(echo -e ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')
+echo -e ":/home/container$ ${MODIFIED_STARTUP}"
+
+# Run the Server
+eval ${MODIFIED_STARTUP}
