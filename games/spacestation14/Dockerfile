@@ -14,7 +14,7 @@ RUN         apt update -y \
             && D_V="$(curl -sSL https://dotnet.microsoft.com/en-us/download/dotnet/9.0 | grep -i  '<h3 id="sdk-9.*">SDK 9.*.*</h3>'  | head -1 | awk -F\" '{print $3}' | awk '{print $2;}' | sed 's/<\/h3>//g')" \ 
             && chmod +x dotnet-install.sh \
 			&& ./dotnet-install.sh -i /usr/share -v $D_V \
-            && ln -s /usr/share/dotnet /usr/bin/dotnet \
+            && ln -s /usr/share/dotnet /usr/bin/dotnet
 
 ## Start with Tini to pass future stop signals correctly
 STOPSIGNAL  SIGINT
