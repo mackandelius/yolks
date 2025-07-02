@@ -18,11 +18,8 @@ export DOTNET_ROOT=/usr/share/
 printf "\033[1m\033[33mcontainer@pelican~ \033[0mdotnet --version\n"
 dotnet --version
 
-mkdir -p /mnt/server
-
 # Switch to the container's working directory
-#cd /home/container || exit 1
-cd /mnt/server || exit 1
+cd /home/container || exit 1
 
 #Installing the server
 git clone https://github.com/ss14Starlight/space-station-14.git
@@ -31,7 +28,7 @@ git submodule update --init --recursive
 #mv * ../
 #cd ..
 #rm space-station-14
-echo "Running RUN_THIS.py"
+#echo "Running RUN_THIS.py"
 
 #python RUN_THIS.py || /usr/bin/python3 RUN_THIS.py || /usr/bin/python RUN_THIS.py
 
@@ -41,7 +38,7 @@ dotnet run --project Content.Packaging server --hybrid-acz --platform linux-x64
 
 # Move compiled files to accessible server folder.
 #mkdir -p /mnt/server
-mv release/ /mnt/server/
+#mv release/ /mnt/server/
 
 # Replace Startup Variables
 MODIFIED_STARTUP=$(echo -e ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')
