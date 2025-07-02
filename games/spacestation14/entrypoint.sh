@@ -35,6 +35,10 @@ echo "Building server"
 dotnet build Content.Packaging --configuration Release
 dotnet run --project Content.Packaging server --hybrid-acz --platform linux-x64
 
+# Move compiled files to accessible server folder.
+mkdir -p /mnt/server
+mv release/ /mnt/server/
+
 # Replace Startup Variables
 MODIFIED_STARTUP=$(echo -e ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')
 echo -e ":/home/container$ ${MODIFIED_STARTUP}"
