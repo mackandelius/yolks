@@ -29,7 +29,7 @@ git clone https://github.com/ss14Starlight/space-station-14.git
 cd space-station-14
 mv * ../
 cd ..
-rm space-station-14
+#rm space-station-14
 echo "Running RUN_THIS.py"
 git submodule update --init --recursive 
 #python RUN_THIS.py || /usr/bin/python3 RUN_THIS.py || /usr/bin/python RUN_THIS.py
