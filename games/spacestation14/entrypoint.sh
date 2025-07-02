@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Wait for the container to fully initialize
-sleep 1
+_SHELL='/bin/bash'
+EXECAPP="${EXECAPP:-$_SHELL}"
 
 # Default the TZ environment variable to UTC.
 TZ=${TZ:-UTC}
