@@ -52,5 +52,4 @@ cd /mnt/server/release
 unzip SS14.Server_linux-x64
 
 # Run the Server
-#eval ${MODIFIED_STARTUP}
-./Robust.Server
+eval ${MODIFIED_STARTUP}
