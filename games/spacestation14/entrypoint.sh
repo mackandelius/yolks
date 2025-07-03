@@ -48,5 +48,9 @@ echo -e ":/home/container$ ${MODIFIED_STARTUP}"
 ls
 find / -type f -name Robust.Server
 
+cd /mnt/server/release
+unzip SS14.Server_linux-x64
+
 # Run the Server
-eval ${MODIFIED_STARTUP}
+#eval ${MODIFIED_STARTUP}
+./Robust.Server
